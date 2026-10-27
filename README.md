@@ -1,58 +1,61 @@
 # 🚀 Dev Progress Tracker
 
-![React](https://img.shields.io/badge/React-18-blue?logo=react)
+![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)
 ![Vite](https://img.shields.io/badge/Vite-5.0-646CFF?logo=vite)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.0-38B2AC?logo=tailwindcss)
+![Node.js](https://img.shields.io/badge/Node.js-Express-339933?logo=nodedotjs)
 ![MongoDB](https://img.shields.io/badge/MongoDB-Supported-47A248?logo=mongodb)
-![License](https://img.shields.io/badge/License-MIT-green)
 
-A personal **Developer Learning Management Dashboard** designed to track daily coding and English study time, run Pomodoro focus sessions, follow customized skills roadmaps, manage side projects, and maintain structured markdown notes.
+A full-stack **Developer Learning Management Dashboard** designed to track daily programming and English study time, run Pomodoro focus sessions with ambient audio, manage learning roadmaps, organize side projects, and maintain structured markdown notes with PDF generation.
 
-Built with an **offline-first hybrid architecture** using a local **MongoDB API** (`server/`) with automatic **LocalStorage** fallback.
-
----
-
-## ✨ Key Features
-
-- 📊 **Analytics & Insights** — Interactive daily/weekly charts and coding-vs-English ratio donuts powered by **Recharts**.
-- ⏱️ **Pomodoro Focus Timer** — Configurable focus/break sessions with built-in history tracking.
-- 🗺️ **Interactive Roadmap** — Follow skill blueprints, track lesson completion, and log technical notes.
-- 📁 **Project Tracker** — Manage side-project tasks, tech stacks, completion progress, and target deadlines.
-- 📝 **Markdown Notes** — Rich text notes editor powered by `marked` with live rendering and category filtering.
-- 🎮 **Gamification System** — Earn XP, level up, maintain daily study streaks, and unlock achievements.
-- ⚡ **Offline-First Hybrid Sync** — Auto-syncs to MongoDB when online (800ms debounce), seamlessly falling back to `LocalStorage` when offline.
-- 🌙 **Dark / Light Theming** — Built dark-first with CSS-variable-driven palette swapping.
+Built with a **hybrid offline-first architecture** featuring an Express/MongoDB backend (`server/`) with dynamic `LocalStorage` fallback.
 
 ---
 
-## 🛠️ Tech Stack
+## ✨ Feature Breakdown
+
+- 📊 **Interactive Dashboard (`MvpDashboard`)**
+  - **Greeting Header & Goal Tracker:** Personal progress overview with active study goal monitoring (`GoalCard`, `GreetingHeader`).
+  - **Daily Learning Checklist:** Interactive routine checklist for daily habits (`DailyLearningChecklist`).
+  - **Continue Learning Card:** Quick-resume entry point for unfinished roadmap modules (`ContinueLearningCard`).
+  - **Analytics & Trends:** Daily/weekly learning statistics driven by `useStats`.
+
+- ⏱️ **Pomodoro & Focus Tools**
+  - **Focus Timer:** Ticker-driven timer system using `useTicker` with custom session management.
+  - **Break Music Player:** Integrated background music player for focus sessions via `useBreakMusic`.
+  - **Notifications:** Browser audio/visual alerts powered by `useNotification`.
+
+- 🗺️ **Interactive Roadmap**
+  - Interactive skill blueprints and lesson modules (`RoadmapSection`, `LessonCard`, `LessonModal`).
+  - Pre-seeded curriculum data (`roadmapData.js`).
+
+- 📁 **Project Tracker**
+  - Side-project organization with task checklists, technology tags, and deadline tracking (`ProjectCard`, `ProjectForm`, `TaskChecklist`).
+
+- 📝 **Notes & Vocabulary Export**
+  - Rich Markdown notes editor (`NoteEditor`, `NoteCard`).
+  - Integrated PDF exporter for vocabulary and note documentation (`vocabPdf.js`).
+  - Media & YouTube embedding integrations (`youtube.js`).
+
+- ⚡ **Data Persistence & Sync**
+  - Dual-layer storage: Automatically syncs to MongoDB via Express API (`api.js`), with instant local fallback to `LocalStorage` (`useLocalStorage.js`).
+
+---
+
+## 🛠️ Technology Stack
 
 ### **Frontend**
 - **Framework:** React 18 + Vite
-- **Styling:** Tailwind CSS (Custom CSS Variables for dynamic themes)
-- **Routing:** React Router v6 (8 custom pages)
-- **Data Visualizations:** Recharts
-- **Icons:** Lucide React
-- **Markdown Parsing:** marked
+- **Styling:** Tailwind CSS + PostCSS (Dynamic light/dark CSS variables)
+- **Routing:** React Router v6
+- **Icons:** Lucide React (`icons.svg`)
+- **PDF Generation:** Custom PDF generator (`vocabPdf.js`)
 
 ### **Backend (`server/`)**
 - **Runtime:** Node.js + Express
-- **Database:** MongoDB (via Mongoose)
-- **Sync Model:** Auto-debounced single-document state persistence
+- **Database:** MongoDB (via Mongoose schema `AppState.js`)
+- **Routes:** Single RESTful API state route (`routes/state.js`)
 
 ---
 
-## 🚀 Getting Started
-
-### **Prerequisites**
-- **Node.js** (v18 or higher)
-- **MongoDB** (Local instance or MongoDB Atlas)
-
----
-
-### **Quick Setup**
-
-#### **1. Clone the Repository**
-```bash
-git clone [https://github.com/NolNarech/Roadmap-habit-.git](https://github.com/NolNarech/Roadmap-habit-.git)
-cd Roadmap-habit-
+## 📂 Exact Project Structure
