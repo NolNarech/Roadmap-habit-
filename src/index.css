@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Dark theme (default) — deep charcoal/slate scale, numbers rise with lightness. */
+  :root,
+  .dark {
+    --surface-950: 10 14 20;
+    --surface-900: 15 20 27;
+    --surface-850: 19 25 36;
+    --surface-800: 23 31 44;
+    --surface-700: 30 40 54;
+    --surface-600: 42 54 70;
+    --surface-500: 61 76 96;
+    --surface-400: 91 107 128;
+    --surface-300: 132 147 166;
+    --surface-200: 179 192 207;
+    --surface-100: 219 227 236;
+    --surface-50: 244 247 250;
+  }
+
+  /* Light theme — same scale inverted so every bg-surface-950/text-surface-100
+     pairing used throughout the app (built dark-first) still reads correctly. */
+  .light {
+    --surface-950: 244 247 250;
+    --surface-900: 237 241 245;
+    --surface-850: 229 234 240;
+    --surface-800: 220 226 234;
+    --surface-700: 205 213 224;
+    --surface-600: 184 194 208;
+    --surface-500: 148 161 178;
+    --surface-400: 113 128 148;
+    --surface-300: 82 96 115;
+    --surface-200: 51 64 82;
+    --surface-100: 26 34 46;
+    --surface-50: 12 17 24;
+  }
+  * {
+    @apply border-surface-700;
+  }
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply bg-surface-950 text-surface-100 font-sans antialiased;
+  }
+  ::selection {
+    @apply bg-accent-500/30 text-white;
+  }
+  /* Visible keyboard focus everywhere */
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent-400 ring-offset-2 ring-offset-surface-950;
+  }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { @apply bg-surface-600 rounded-full; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-surface-500; }
+}
+
+@layer components {
+  .card {
+    @apply bg-surface-850 border border-surface-700 rounded-2xl shadow-card;
+  }
+  .input-base {
+    @apply w-full bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-sm text-surface-100 placeholder-surface-400 focus:border-accent-400 transition-colors;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

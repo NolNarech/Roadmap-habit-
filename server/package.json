@@ -1,0 +1,17 @@
+{
+  "name": "dev-progress-tracker-server",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "MongoDB-backed API for Dev Progress Tracker — saves the whole app state (tasks, XP, roadmap, notes, etc.) so it survives across devices/browsers instead of living only in LocalStorage.",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.9.0"
+  }
+}
